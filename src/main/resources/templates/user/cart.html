@@ -1,20 +1,82 @@
-<!DOCTYPE html>
-<html lang="ru">
+<!--<!DOCTYPE html>-->
+<!--<html lang="ru">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Корзина</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h3>Корзина товаров</h3>-->
+<!--<div th:each="product : ${cart_product}">-->
+<!--    <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="300px">-->
+<!--    <br>-->
+<!--    <a th:href="@{/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}"></a>-->
+<!--    <p th:text="'Цена: ' + ${product.getPrice()}"></p>-->
+<!--    <a th:href="@{/cart/delete/{id}(id=${product.getId()})}">Удалить</a>-->
+<!--    <hr>-->
+<!--</div>-->
+<!--<h3 th:text="'Итоговая цена: ' + ${price}"></h3>-->
+<!--<a href="/order/create">Оформить заказ</a>-->
+<!--</body>-->
+<!--</html>-->
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Корзина</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Корзина товаров</title>
+    <link th:href="@{/css/stylesheet.css}"  type="text/css" rel="stylesheet">
 </head>
 <body>
-<h3>Корзина товаров</h3>
-<div th:each="product : ${cart_product}">
-    <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="300px">
-    <br>
-    <a th:href="@{/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}"></a>
-    <p th:text="'Цена: ' + ${product.getPrice()}"></p>
-    <a th:href="@{/cart/delete/{id}(id=${product.getId()})}">Удалить</a>
-    <hr>
+<div id="top_bar_black">
+    <div id="logo_container">
+        <div id="logo_image">
+        </div>
+        <div id="nav_block">
+            <form th:action="@{/person account}">
+                <input class="nav_button_input" type="submit" value="Главная">
+            </form>
+            <form th:action="@{/orders}">
+                <input class="nav_button_input" type="submit" value="Заказы">
+            </form>
+            <form method="post" th:action="@{/logout}">
+                <input class="nav_button_input" type="submit" value="Выход">
+            </form>
+        </div>
+    </div>
 </div>
-<h3 th:text="'Итоговая цена: ' + ${price}"></h3>
-<a href="/order/create">Оформить заказ</a>
+<div id="main_container">
+    <form>
+        <fieldset  style="align-content: center" >
+            <legend>Корзина товаров</legend>
+            <div class="registration-cssave">
+                <h3 th:text="'Итоговая цена: ' + ${price}"></h3>
+                <a class="add_order_a" href="/order/create">Оформить заказ</a>
+            </div>
+        </fieldset>
+    </form>
+</div>
+<div id="content_container">
+    <div id="header">
+    </div>
+    <div id="header_lower">
+        <div class="lower" >
+            <div class="header_content_mainline"> Товары в корзине:
+            </div>
+            <div  class="header_content_boxcontent" th:each="product : ${cart_product}">
+                <img th:src="'/img/' + ${product.imageList[0].getFileName()}" width="170px">
+                <br>
+                <div class="header_content_boxcontent_a">
+                    <a th:href="@{/person account/product/info/{id}(id=${product.getId()})}" th:text="${product.getTitle()}"></a>
+                </div>
+                <p th:text="'Цена: ' + ${product.getPrice()}"></p>
+                <div class="form-group registration-cssave" >
+                    <a class=" btn btn-primary btn-block create-account_a" th:href="@{/cart/delete/{id}(id=${product.getId()})}">Удалить</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

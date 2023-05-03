@@ -1,26 +1,50 @@
-<!DOCTYPE html>
-<html lang="ru">
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>Личный кабинет администратора</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Кабинет администратора</title>
+    <link th:href="@{/css/stylesheet.css}"  type="text/css" rel="stylesheet">
 </head>
 <body>
-<h1>Личный кабинет администратора</h1>
-<form method="post" th:action="@{/logout}">
-    <button type="submit">Выйти из личного кабинета</button>
-</form>
-<a href="admin/product/add">Добавить товар</a>
-<hr>
-<div th:each="product : ${products}">
-    <p th:text="'Наименование: ' + ${product.getTitle()}"></p>
-    <p th:text="'Описание: ' + ${product.getDescription()}"></p>
-    <p th:text="'Цена: ' + ${product.getPrice()}"></p>
-    <p th:text="'Cклад: ' + ${product.getWarehouse()}"></p>
-    <p th:text="'Продавец: ' + ${product.getSeller()}"></p>
-    <p th:text="'Категория: ' + ${product.getCategory().getName()}"></p>
-    <a th:href="@{/admin/product/edit/{id}(id=${product.getId()})}">Редактирование товара</a>
-    <a th:href="@{/admin/product/delete/{id}(id=${product.getId()})}">Удаление товара</a>
-    <hr>
+<div id="top_bar_black">
+    <div id="logo_container">
+        <div id="logo_image">
+        </div>
+        <div id="nav_block">
+            <form th:action="@{/admin}">
+                <input class="nav_button_input" type="submit" value="Главная">
+            </form>
+            <form th:action="@{/admin/product/add}">
+                <input class="nav_button_input" type="submit" value="Добавить товар">
+            </form>
+            <form method="post" th:action="@{/logout}">
+                <input class="nav_button_input" type="submit" value="Выход">
+            </form>
+        </div>
+    </div>
+</div>
+<div id="content_container">
+    <div id="header">
+    </div>
+    <div id="header_lower">
+        <div class="lower">
+            <div class="header_content_boxcontent_admin" th:each="product : ${products}">
+                <p  class="header_content_mainline" th:text="'Наименование: ' + ${product.getTitle()}"></p>
+                <p th:text="'Описание: ' + ${product.getDescription()}"></p>
+                <p th:text="'Цена: ' + ${product.getPrice()}"></p>
+                <p th:text="'Cклад: ' + ${product.getWarehouse()}"></p>
+                <p th:text="'Продавец: ' + ${product.getSeller()}"></p>
+                <p th:text="'Категория: ' + ${product.getCategory().getName()}"></p>
+                <div class="form-group registration-cssave" >
+                    <a class=" btn btn-primary btn-block create-account"  th:href="@{/admin/product/edit/{id}(id=${product.getId()})}">Редактирование товара</a>
+                </div>
+                <div class="form-group registration-cssave" >
+                    <a class=" btn btn-primary btn-block create-account"  th:href="@{/admin/product/delete/{id}(id=${product.getId()})}">Удаление товара</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

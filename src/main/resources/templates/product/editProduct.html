@@ -1,47 +1,81 @@
-<!DOCTYPE html>
-<html lang="ru">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Редактирование товара</title>
+    <link th:href="@{/css/stylesheet.css}"  type="text/css" rel="stylesheet">
 </head>
 <body>
-<h3>Редактирование товара</h3>
-<form th:method="POST" th:action="@{/admin/product/edit/{id}(id=${product.getId()})}" th:object="${product}" enctype="multipart/form-data">
-    <label for="title">Введите наименование товара: </label>
-    <input type="text" th:field="*{title}" placeholder="Наименование" id="title">
-    <div style="color: red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
-    <br>
-    <br>
-    <label for="description">Введите описание товара: </label>
-    <textarea th:field="*{description}" placeholder="Описание" id="description"></textarea>
-    <div style="color: red" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
-    <br>
-    <br>
-    <label for="price">Введите цену товара: </label>
-    <input type="number" th:field="*{price}" min="1" step="0.00" placeholder="Цена" id="price">
-    <div style="color: red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
-    <br>
-    <br>
-    <label for="warehouse">Введите cклад, на котором расположен товар: </label>
-    <input type="text" th:field="*{warehouse}" placeholder="Cклад" id="warehouse">
-    <div style="color: red" th:if="${#fields.hasErrors('warehouse')}" th:errors="*{warehouse}"></div>
-    <br>
-    <br>
-    <label for="category">Выберите категорию товара: </label>
-    <select name="category" th:field="*{category}" id="category">
-        <div th:each="element : ${category}">
-            <option th:text="${element.getName()}" th:value="${element.getId()}">
+<div id="top_bar_black">
+    <div id="logo_container">
+        <div id="logo_image">
         </div>
-    </select>
-    <div style="color: red" th:if="${#fields.hasErrors('category')}" th:errors="*{category}"></div>
-    <br>
-    <br>
-    <label for="seller">Введите данные о продавце: </label>
-    <textarea th:field="*{seller}" placeholder="Продавец" id="seller"></textarea>
-    <div style="color: red" th:if="${#fields.hasErrors('seller')}" th:errors="*{seller}"></div>
-    <br>
-    <br>
-    <input type="submit" value="Редактировать">
-</form>
+        <div id="nav_block">
+            <form th:action="@{/admin}">
+                <input class="nav_button_input" type="submit" value="Главная">
+            </form>
+            <form th:action="@{/admin/product/add}">
+                <input class="nav_button_input" type="submit" value="Добавить товар">
+            </form>
+            <form method="post" th:action="@{/logout}">
+                <input class="nav_button_input" type="submit" value="Выход">
+            </form>
+        </div>
+    </div>
+</div>
+<div id="content_container">
+    <div id="header">
+    </div>
+    <div id="header_lower">
+        <div class="lower">
+
+            <div class="registration-cssave header_content_mainline">
+                <form th:method="POST" th:action="@{/admin/product/edit/{id}(id=${product.getId()})}" th:object="${product}" enctype="multipart/form-data">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+                    <h3 class="text-center">Редактирование товара</h3>
+                    <div class="form-group">
+                        <input class="form-control item" type="text" th:field="*{title}" placeholder="Наименование" id="title" required>
+                        <div style="color: red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea class="form-control item" th:field="*{description}" placeholder="Описание" id="description"></textarea>
+                        <div style="color: red" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
+                    </div>
+
+                    <p class="add_product_a">Цена товара</p>
+                    <div class="form-group">
+                        <input class="form-control item" type="number" th:field="*{price}" min="1" step="0.00" placeholder="Цена" id="price">
+                        <div style="color: red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
+                    </div>
+
+                    <p class="add_product_a">Cклад</p>
+                    <div class="form-group">
+                        <input class="form-control item" type="text" th:field="*{warehouse}" placeholder="Cклад" id="warehouse">
+                        <div style="color: red" th:if="${#fields.hasErrors('warehouse')}" th:errors="*{warehouse}"></div>
+                    </div>
+
+                    <p class="add_product_a">Категория</p>
+                    <div class="form-group">
+                        <select class="form-control item" name="category" th:field="*{category}" id="category">
+                            <div th:each="element : ${category}">
+                                <option th:text="${element.getName()}" th:value="${element.getId()}">
+                            </div>
+                        </select>
+                        <div style="color: red" th:if="${#fields.hasErrors('category')}" th:errors="*{category}"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea class="form-control item" th:field="*{seller}" placeholder="Продавец" id="seller"></textarea>
+                        <div style="color: red" th:if="${#fields.hasErrors('seller')}" th:errors="*{seller}"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <button class="btn btn-primary btn-block create-account" type="submit">Редактировать</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

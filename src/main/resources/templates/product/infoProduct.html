@@ -1,19 +1,67 @@
-<!DOCTYPE html>
-<html lang="ru">
+<!--<!DOCTYPE html>-->
+<!--<html lang="ru">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Информация о товаре</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h3>Информация о товаре: </h3>-->
+<!--<p th:text="'Наименование: ' + ${product.getTitle()}"></p>-->
+<!--<p th:text="'Описание: ' + ${product.getDescription()}"></p>-->
+<!--<p th:text="'Цена: ' + ${product.getPrice()}"></p>-->
+<!--<p th:text="'Cклад: ' + ${product.getWarehouse()}"></p>-->
+<!--<p th:text="'Продавец: ' + ${product.getSeller()}"></p>-->
+<!--<p th:text="'Категория: ' + ${product.getCategory().getName()}"></p>-->
+<!--<div th:each="img : ${product.getImageList()}">-->
+<!--    <img th:src="'/img/' + ${img.getFileName()}">-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Информация о товаре</title>
+    <link th:href="@{/css/stylesheet.css}"  type="text/css" rel="stylesheet">
 </head>
 <body>
-<h3>Информация о товаре: </h3>
-<p th:text="'Наименование: ' + ${product.getTitle()}"></p>
-<p th:text="'Описание: ' + ${product.getDescription()}"></p>
-<p th:text="'Цена: ' + ${product.getPrice()}"></p>
-<p th:text="'Cклад: ' + ${product.getWarehouse()}"></p>
-<p th:text="'Продавец: ' + ${product.getSeller()}"></p>
-<p th:text="'Категория: ' + ${product.getCategory().getName()}"></p>
-<div th:each="img : ${product.getImageList()}">
-    <img th:src="'/img/' + ${img.getFileName()}">
+<div id="top_bar_black">
+    <div id="logo_container">
+        <div id="logo_image">
+        </div>
+        <div id="nav_block">
+            <form th:action="@{/product}">
+                <input class="nav_button_input" type="submit" value="Главная">
+            </form>
+            <form th:action="@{/authentication}">
+                <input class="nav_button_input" type="submit" value="Войти">
+            </form>
+            <form th:action="@{/registration}">
+                <input class="nav_button_input" type="submit" value="Регистрация">
+            </form>
+        </div>
+    </div>
+</div>
+<div id="content_container">
+    <div id="header">
+    </div>
+    <div id="header_lower">
+        <div class="lower">
+            <div class="header_content_mainline"> Информация о товаре:
+            </div>
+            <div  class="header_content_boxcontent_admin">
+                <p th:text="'Наименование: ' + ${product.getTitle()}"></p>
+                <p th:text="'Описание: ' + ${product.getDescription()}"></p>
+                <p th:text="'Цена: ' + ${product.getPrice()}"></p>
+                <p th:text="'Cклад: ' + ${product.getWarehouse()}"></p>
+                <p th:text="'Продавец: ' + ${product.getSeller()}"></p>
+                <p th:text="'Категория: ' + ${product.getCategory().getName()}"></p>
+                <div class="info_product_imgs" th:each="img : ${product.getImageList()}">
+                    <img th:src="'/img/' + ${img.getFileName()}">
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
