@@ -38,13 +38,13 @@
                     <div class="form-group">
                         <input class="form-control item" type="password" name="password" id="password" placeholder="Пароль" required>
                     </div>
+                    <div th:if="${param.error}" class="error">
+                        Неправильный логин или пароль
+                    </div>
                     <div class="form-group">
                         <button class="btn btn-primary btn-block create-account" type="submit">Вход в аккаунт</button>
                     </div>
                 </form>
-                <div th:if="${param.error}" style="color: red">
-                    Неправильный логин или пароль
-                </div>
             </div>
         </div>
     </div>

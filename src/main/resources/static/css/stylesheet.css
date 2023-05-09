@@ -37,7 +37,7 @@ body {
 	width:255px;
 	height:75px;
 	margin-left:10px;
-	margin-top:15px;
+	margin-top:8px;
 	float:left;
 	background-image: url(../images/logo.gif);
 }
@@ -55,7 +55,7 @@ body {
 }
 
 #nav_block {
-	width: 400px;
+	width: 500px;
 	height:90px;
 	float:right;
 }
@@ -89,7 +89,7 @@ body {
 
 .header_content_mainline {
 	font-size:35px;
-	color:chocolate;
+	color:#7f4526;
 	width:500px;
 	font-style: italic;
 }
@@ -124,12 +124,13 @@ body {
 	font-style: italic;
 	float:left;
 	padding: 10px;
-	border: 4px solid chocolate;
+	border: 4px solid #7f4526;
  }
 .header_content_boxcontent_a {
 	max-height: 20px;
 	width:170px;
 	white-space: nowrap;
+	text-overflow: ellipsis;
 	font-weight: bold;
 	overflow: hidden;
 }
@@ -156,10 +157,14 @@ a{
 	margin-left: 20px;
 	float: inherit;
 }
+.error{
+	color: red;
+	font-size: 14px;
+}
 .nav_button_input {
-	width: 100px; /*This number you can edit when you need to add more with to fit your text inside the button */
+	width: 130px; /*This number you can edit when you need to add more with to fit your text inside the button */
 	color:#FFFFFF;
-	background-color: black;
+	background-color: #7f4526;
 	font-family:Verdana, Arial, Helvetica, sans-serif;
 	font-size:12px;
 	margin-left:5px;
@@ -167,11 +172,12 @@ a{
 	text-align:center;
 	float:left;
 	white-space: normal;
+	border: none;
 }
 
 .nav_button_input:hover {
 	text-decoration:none;
-	background-color:#333333;
+	background-color: #a64c1d;
 }
 
 
@@ -212,7 +218,19 @@ a{
 	padding:10px 20px;
 	font-size:18px;
 	font-weight:bold;
-	background-color:chocolate;
+	background-color:#7f4526;
+	border:none;
+	color:white;
+	margin-top:20px;
+	margin-left:20px;
+	float: left;
+}
+.registration-cssave .create-account:hover {
+	border-radius:30px;
+	padding:10px 20px;
+	font-size:18px;
+	font-weight:bold;
+	background-color: #a64c1d;
 	border:none;
 	color:white;
 	margin-top:20px;
@@ -224,19 +242,29 @@ a{
 	padding:5px;
 	font-size:13px;
 	font-weight:bold;
-	background-color:chocolate;
+	background-color:#7f4526;
 	border:none;
 	color:white;
 	margin-top:5px;
 	float: left;
 }
-
+.registration-cssave .create-account_a:hover {
+	border-radius:30px;
+	padding:5px;
+	font-size:13px;
+	font-weight:bold;
+	background-color: #a64c1d;
+	border:none;
+	color:white;
+	margin-top:5px;
+	float: left;
+}
 .add_order_a {
 	border-radius:30px;
 	padding:5px;
 	font-size:13px;
 	font-weight:bold;
-	background-color:chocolate;
+	background-color:#7f4526;
 	border:none;
 	color:white;
 	margin-top:5px;

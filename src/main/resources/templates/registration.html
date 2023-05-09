@@ -34,15 +34,15 @@
                     <h3 class="text-center">Регистрация</h3>
                     <div class="form-group">
                         <input class="form-control item" type="text" th:field="*{login}" id="login" placeholder="Логин" required>
+                        <div class="error" th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></div>
                     </div>
                     <div class="form-group">
                         <input class="form-control item" type="password" th:field="*{password}" id="password" placeholder="Пароль" required>
+                        <div class="error" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
                     </div>
                     <div class="form-group">
                         <button class="btn btn-primary btn-block create-account" type="submit">Зарегистрироваться</button>
                     </div>
-                    <div style="color: red" th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></div>
-                    <div style="color: red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
                 </form>
             </div>
         </div>

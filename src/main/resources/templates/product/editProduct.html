@@ -35,24 +35,24 @@
                     <h3 class="text-center">Редактирование товара</h3>
                     <div class="form-group">
                         <input class="form-control item" type="text" th:field="*{title}" placeholder="Наименование" id="title" required>
-                        <div style="color: red" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
+                        <div class="error" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
                     </div>
 
                     <div class="form-group">
                         <textarea class="form-control item" th:field="*{description}" placeholder="Описание" id="description"></textarea>
-                        <div style="color: red" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
+                        <div class="error" th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></div>
                     </div>
 
                     <p class="add_product_a">Цена товара</p>
                     <div class="form-group">
-                        <input class="form-control item" type="number" th:field="*{price}" min="1" step="0.00" placeholder="Цена" id="price">
-                        <div style="color: red" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
+                        <input class="form-control item" type="number" min="1" step="any" th:field="*{price}" placeholder="Цена" id="price">
+                        <div class="error" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
                     </div>
 
                     <p class="add_product_a">Cклад</p>
                     <div class="form-group">
                         <input class="form-control item" type="text" th:field="*{warehouse}" placeholder="Cклад" id="warehouse">
-                        <div style="color: red" th:if="${#fields.hasErrors('warehouse')}" th:errors="*{warehouse}"></div>
+                        <div class="error" th:if="${#fields.hasErrors('warehouse')}" th:errors="*{warehouse}"></div>
                     </div>
 
                     <p class="add_product_a">Категория</p>
@@ -62,12 +62,12 @@
                                 <option th:text="${element.getName()}" th:value="${element.getId()}">
                             </div>
                         </select>
-                        <div style="color: red" th:if="${#fields.hasErrors('category')}" th:errors="*{category}"></div>
+                        <div class="error" th:if="${#fields.hasErrors('category')}" th:errors="*{category}"></div>
                     </div>
 
                     <div class="form-group">
                         <textarea class="form-control item" th:field="*{seller}" placeholder="Продавец" id="seller"></textarea>
-                        <div style="color: red" th:if="${#fields.hasErrors('seller')}" th:errors="*{seller}"></div>
+                        <div class="error" th:if="${#fields.hasErrors('seller')}" th:errors="*{seller}"></div>
                     </div>
 
                     <div class="form-group">
